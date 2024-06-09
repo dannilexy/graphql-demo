@@ -30,13 +30,30 @@ namespace GraphQLProject
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
             builder.Services.AddTransient<IMenuRepo, MenuRepo>();
             builder.Services.AddTransient<ICategoryRepo, CategoryRepo>();
             builder.Services.AddTransient<IReservationRepo, ReservationRepo>();
+
             builder.Services.AddTransient<MenuType>();
+            builder.Services.AddTransient<CategoryType>();
+            builder.Services.AddTransient<ReservationType>();
+
             builder.Services.AddTransient<MenuQuery>();
+            builder.Services.AddTransient<CategoryQuery>();
+            builder.Services.AddTransient<ReservationQuery>();
+            builder.Services.AddTransient<RootQuery>();
+
             builder.Services.AddTransient<MenuMutation>();
-            builder.Services.AddTransient<ISchema, MenuSchema>();
+            builder.Services.AddTransient<CategoryMutation>();
+            builder.Services.AddTransient<ReservationMutation>();
+            builder.Services.AddTransient<RootMutation>();
+
+            builder.Services.AddTransient<MenuInputType>();
+            builder.Services.AddTransient<CategoryInputType>();
+            builder.Services.AddTransient<ReservationInputType>();
+
+            builder.Services.AddTransient<ISchema, RootSchema>();
 
             builder.Services.AddGraphQL(b => b.AddAutoSchema<ISchema>().AddSystemTextJson());
 

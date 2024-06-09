@@ -3,16 +3,13 @@ using GraphQLProject.Models;
 
 namespace GraphQLProject.Type
 {
-    public class MenuInputType : InputObjectGraphType<Menu>
+    public class CategoryInputType : InputObjectGraphType<Menu>
     {
-        public MenuInputType()
+        public CategoryInputType()
         {
             Field<IntGraphType>(name: "Id");
             Field<StringGraphType>(name: "Name");
-            Field<StringGraphType>(name: "Description");
-            Field<FloatGraphType>(name: "Price");
             Field<StringGraphType>(name: "ImageUrl");
-            Field<IntGraphType>(name: "CategoryId");
         }
     }
 }

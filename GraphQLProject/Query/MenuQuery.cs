@@ -9,7 +9,12 @@ namespace GraphQLProject.Query
     {
         public MenuQuery(IMenuRepo _menu)
         {
-            Field<ListGraphType<MenuType>>("menus", resolve: context => _menu.GetAllMenus());
+            Field<ListGraphType<MenuType>>("menus").ResolveAsync(async x =>
+            {
+                return _menu.GetAllMenus();
+            });
+
+            //gET MENU WITH iD
 
             Field<MenuType>("menu", arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" }),
                             resolve: context =>
